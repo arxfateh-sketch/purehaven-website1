@@ -90,3 +90,67 @@
     will-change: auto;
   }
 }
+/* PUREHAVEN — Continuous Cinematic Motion */
+
+/* Service card images */
+.service-photo {
+  animation: phServiceDrift 18s ease-in-out infinite alternate !important;
+  background-size: 108% 108% !important;
+  background-position: 48% 50%;
+  will-change: background-position, background-size;
+}
+
+.service-card:nth-child(2) .service-photo {
+  animation-delay: -4s !important;
+}
+
+.service-card:nth-child(3) .service-photo {
+  animation-delay: -8s !important;
+}
+
+.service-card:nth-child(4) .service-photo {
+  animation-delay: -12s !important;
+}
+
+/* Image beside "Not just clean. Considered." */
+.approach-photo {
+  animation: phApproachDrift 24s ease-in-out infinite alternate !important;
+  background-size: 108% 108% !important;
+  background-position: 48% 50%;
+  will-change: background-position, background-size;
+}
+
+/* Gentle movement that runs without hovering */
+@keyframes phServiceDrift {
+  0% {
+    background-position: 46% 51%;
+    background-size: 106% 106%;
+  }
+
+  100% {
+    background-position: 54% 47%;
+    background-size: 116% 116%;
+  }
+}
+
+@keyframes phApproachDrift {
+  0% {
+    background-position: 47% 50%;
+    background-size: 106% 106%;
+  }
+
+  100% {
+    background-position: 53% 46%;
+    background-size: 116% 116%;
+  }
+}
+
+/* Respect visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .service-photo,
+  .approach-photo {
+    animation: none !important;
+    will-change: auto;
+    background-size: cover !important;
+  }
+}
