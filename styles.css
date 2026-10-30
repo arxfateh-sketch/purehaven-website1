@@ -15,112 +15,82 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 
 
-/* Cinematic motion: slow, restrained movement with reduced-motion support */
-.hero-art { overflow: hidden; }
+/* ==========================================
+   PUREHAVEN — CINEMATIC IMAGE MOTION
+   Continuous movement on desktop and mobile
+   ========================================== */
+
+/* HERO IMAGE */
+.hero-art {
+  overflow: hidden;
+}
+
 .hero-image {
   background-size: 110% 110%;
-  transform: scale(1.015);
+  background-position: 50% 50%;
   transform-origin: center;
-  animation: purehavenCinematicDrift 24s ease-in-out infinite alternate;
+  animation: phHeroDrift 24s ease-in-out infinite alternate;
   will-change: background-position, background-size, transform;
 }
-.hero-image:after { animation: purehavenLightShift 18s ease-in-out infinite alternate; }
-.image-note { animation: purehavenNoteFloat 7s ease-in-out infinite; }
-.service-photo {
-  background-size: 100% 100%;
-  transition: background-size 1.2s cubic-bezier(.2,.7,.2,1), filter .5s ease;
+
+/* Floating information card */
+.image-note {
+  animation: phNoteFloat 7s ease-in-out infinite;
 }
-.service-card:hover .service-photo { background-size: 108% 108%; }
-.approach-photo {
-  background-size: 105% 105%;
-  animation: purehavenApproachDrift 28s ease-in-out infinite alternate;
-}
-@keyframes purehavenCinematicDrift {
-  0% { background-position: 48% 50%; background-size: 108% 108%; transform: scale(1.015); }
-  100% { background-position: 54% 46%; background-size: 116% 116%; transform: scale(1.045); }
-}
-@keyframes purehavenLightShift { 0% { opacity: .45; } 100% { opacity: 1; } }
-@keyframes purehavenNoteFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-@keyframes purehavenApproachDrift {
-  0% { background-position: 48% 50%; background-size: 103% 103%; }
-  100% { background-position: 53% 47%; background-size: 111% 111%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-image, .hero-image:after, .image-note, .approach-photo { animation: none !important; will-change: auto; }
-  .hero-image { transform: none; background-size: cover; }
-  .approach-photo { background-size: cover; }
-  .service-photo { transition: none; }
-}
-/* PUREHAVEN — Cinematic Service Image Motion */
+
+/* FOUR SERVICE IMAGES */
 .service-photo {
   background-size: 108% 108% !important;
   background-position: 48% 50%;
-  animation: purehavenServiceCinematic 20s ease-in-out infinite alternate !important;
+  animation: phServiceDrift 20s ease-in-out infinite alternate;
+  transition: background-size 1.2s ease, filter 0.5s ease;
   will-change: background-position, background-size;
 }
 
-/* Stagger the movement for a more natural cinematic feel */
+/* Stagger animations so the images don't move together */
 .service-card:nth-child(2) .service-photo {
-  animation-delay: -5s !important;
+  animation-delay: -5s;
 }
 
 .service-card:nth-child(3) .service-photo {
-  animation-delay: -10s !important;
+  animation-delay: -10s;
 }
 
 .service-card:nth-child(4) .service-photo {
-  animation-delay: -15s !important;
+  animation-delay: -15s;
 }
 
-@keyframes purehavenServiceCinematic {
+/* Gentle desktop hover effect */
+.service-card:hover .service-photo {
+  animation-play-state: paused;
+  background-size: 120% 120% !important;
+  filter: saturate(1.08);
+}
+
+/* LARGE IMAGE BESIDE "NOT JUST CLEAN. CONSIDERED." */
+.approach-photo {
+  background-size: 108% 108%;
+  background-position: 48% 50%;
+  animation: phApproachDrift 26s ease-in-out infinite alternate;
+  will-change: background-position, background-size;
+}
+
+/* HERO MOVEMENT */
+@keyframes phHeroDrift {
   0% {
-    background-position: 46% 51%;
-    background-size: 106% 106%;
+    background-position: 47% 50%;
+    background-size: 108% 108%;
+    transform: scale(1.01);
   }
+
   100% {
-    background-position: 54% 47%;
+    background-position: 54% 46%;
     background-size: 116% 116%;
+    transform: scale(1.035);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .service-photo {
-    animation: none !important;
-    background-size: cover !important;
-    will-change: auto;
-  }
-}
-/* PUREHAVEN — Continuous Cinematic Motion */
-
-/* Service card images */
-.service-photo {
-  animation: phServiceDrift 18s ease-in-out infinite alternate !important;
-  background-size: 108% 108% !important;
-  background-position: 48% 50%;
-  will-change: background-position, background-size;
-}
-
-.service-card:nth-child(2) .service-photo {
-  animation-delay: -4s !important;
-}
-
-.service-card:nth-child(3) .service-photo {
-  animation-delay: -8s !important;
-}
-
-.service-card:nth-child(4) .service-photo {
-  animation-delay: -12s !important;
-}
-
-/* Image beside "Not just clean. Considered." */
-.approach-photo {
-  animation: phApproachDrift 24s ease-in-out infinite alternate !important;
-  background-size: 108% 108% !important;
-  background-position: 48% 50%;
-  will-change: background-position, background-size;
-}
-
-/* Gentle movement that runs without hovering */
+/* SERVICE IMAGE MOVEMENT */
 @keyframes phServiceDrift {
   0% {
     background-position: 46% 51%;
@@ -133,6 +103,7 @@
   }
 }
 
+/* APPROACH IMAGE MOVEMENT */
 @keyframes phApproachDrift {
   0% {
     background-position: 47% 50%;
@@ -141,16 +112,36 @@
 
   100% {
     background-position: 53% 46%;
-    background-size: 116% 116%;
+    background-size: 114% 114%;
   }
 }
 
-/* Respect visitors who prefer reduced motion */
+/* SUBTLE FLOATING CARD */
+@keyframes phNoteFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ACCESSIBILITY: RESPECT REDUCED-MOTION SETTINGS */
 @media (prefers-reduced-motion: reduce) {
+  .hero-image,
+  .image-note,
   .service-photo,
   .approach-photo {
     animation: none !important;
+    transition: none !important;
     will-change: auto;
+  }
+
+  .hero-image,
+  .service-photo,
+  .approach-photo {
     background-size: cover !important;
+    transform: none;
   }
 }
