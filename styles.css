@@ -17,3 +17,35 @@
 /* Price estimator and WhatsApp contact */
 .estimator{padding-top:100px;padding-bottom:105px}.estimator-card{display:grid;grid-template-columns:1fr .9fr;border:1px solid var(--line);background:var(--paper)}.estimator-fields{padding:35px}.estimator-fields label{display:block;font-size:10px;font-weight:700;color:#435248;margin-bottom:18px}.estimator-fields select{display:block;width:100%;border:1px solid #d4dcd0;background:#f8f8f2;margin-top:8px;padding:13px 12px;color:var(--ink);font-size:12px}.estimator-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}.estimate-disclaimer{font-size:10px;line-height:1.8;color:var(--muted);margin:5px 0 0}.estimate-result{background:var(--green);color:#f7f5ef;padding:42px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.estimate-label{font-size:9px;letter-spacing:1.5px;color:#d1dbd0;font-weight:700}.estimate-result strong{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:500;margin:15px 0 7px}.estimate-result p{font-size:11px;color:#d1dbd0;line-height:1.8;margin:0 0 24px}.estimate-result .button{border:0;cursor:pointer;font-size:10px}.estimate-result small{font-size:9px;color:#c4d0c3;margin-top:13px;line-height:1.7}.whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:30;display:flex;align-items:center;gap:9px;padding:13px 17px;border-radius:999px;background:#217b4b;color:white;font-size:11px;font-weight:700;box-shadow:0 8px 25px #172d202c}.whatsapp-float>span:first-child{font-size:18px}.whatsapp-float:hover{transform:translateY(-2px)}
 @media(max-width:650px){.estimator{padding-top:75px;padding-bottom:78px}.estimator-card{grid-template-columns:1fr}.estimator-fields{padding:24px 20px}.estimate-result{padding:30px 23px}.whatsapp-float{right:12px;bottom:12px;padding:12px 15px}.estimator-row{gap:10px}}
+/* Gentle image motion */
+@keyframes gentleImageMotion {
+  0%, 100% {
+    background-position: center center;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 52% 48%;
+    transform: scale(1.025);
+  }
+}
+
+.hero-image,
+.approach-photo {
+  animation: gentleImageMotion 18s ease-in-out infinite;
+  will-change: background-position, transform;
+}
+
+.service-photo {
+  animation: gentleImageMotion 22s ease-in-out infinite;
+  will-change: background-position, transform;
+}
+
+/* Keep motion disabled for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-image,
+  .approach-photo,
+  .service-photo {
+    animation: none;
+    will-change: auto;
+  }
+}
