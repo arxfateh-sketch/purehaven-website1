@@ -36,3 +36,10 @@ You can publish the site using GitHub Pages or another static host. This project
 ## Suggested sales positioning
 
 “Responsive cleaning-business website template with service sections, example packages, FAQ and a quote-request email draft. Ready to customize for a real cleaning business. Demo/template only; no traffic, revenue or customer base is claimed.”
+
+
+## Added in this upgrade
+
+- Interactive cleaning price estimator with **illustrative PKR rates**. These are placeholders and must be changed to match the actual business before launch.
+- Floating WhatsApp button and a WhatsApp quote action configured to the owner's current number. Update `whatsappNumber` in `script.js` and the `wa.me` link in `index.html` when handing this template to a buyer.
+- The current site is still a static GitHub Pages site. A secure admin dashboard that saves edits across devices is not included yet; it requires a real CMS/backend and authentication. Do not treat a front-end-only admin page as secure.
